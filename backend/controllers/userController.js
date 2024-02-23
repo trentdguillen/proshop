@@ -136,7 +136,7 @@ const deleteUser = asyncHandler(async (req, res) => {
       throw new Error('Can not delete admin user');
     }
     await User.deleteOne({ _id: user._id });
-    res.json({ message: 'User removed' });
+    res.json({ message: 'User deleted succesfully' });
   } else {
     res.status(404);
     throw new Error('User not found');
@@ -172,7 +172,14 @@ const updateUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/:id
 // @access  Private/Admin
 const getUserById = asyncHandler(async (req, res) => {
-  res.send('get users');
+  const user = await User.findById(req.params.id).select('-password');
+
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    res.status(404);
+    throw new Error('User not found');
+  }
 });
 
 export {
