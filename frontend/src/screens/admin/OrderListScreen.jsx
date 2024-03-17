@@ -6,7 +6,7 @@ import Loader from '../../components/Loader';
 import { useGetOrdersQuery } from '../../slices/ordersApiSlice';
 
 const OrderListScreen = () => {
-  const {data: orders, isLoading, error } = useGetOrdersQuery();
+  const { data: orders, isLoading, error } = useGetOrdersQuery();
 
   return (
     <>
@@ -14,17 +14,21 @@ const OrderListScreen = () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error}</Message>
+        <Message variant='danger'>
+          {error?.data?.message || error.error}
+        </Message>
       ) : (
         <Table striped hover responsive className='table-sm'>
           <thead>
-            <tr>ID</tr>
-            <tr>USER</tr>
-            <tr>DATE</tr>
-            <tr>TOTAL</tr>
-            <tr>PAID</tr>
-            <tr>DELIVERED</tr>
-            <tr></tr>
+            <tr>
+              <th>ID</th>
+              <th>USER</th>
+              <th>DATE</th>
+              <th>TOTAL</th>
+              <th>PAID</th>
+              <th>DELIVERED</th>
+              <th></th>
+            </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
@@ -32,19 +36,19 @@ const OrderListScreen = () => {
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
-                <td>{order.totalPrice}</td>
+                <td>${order.totalPrice}</td>
                 <td>
                   {order.isPaid ? (
-                    order.paidAt.substring(0,10)
+                    order.paidAt.substring(0, 10)
                   ) : (
-                    <FaTimes style={{ color: 'red'}} />
+                    <FaTimes style={{ color: 'red' }} />
                   )}
                 </td>
                 <td>
                   {order.isDelivered ? (
-                    order.deliveredAt.substring(0,10)
+                    order.deliveredAt.substring(0, 10)
                   ) : (
-                    <FaTimes style={{ color: 'red'}} />
+                    <FaTimes style={{ color: 'red' }} />
                   )}
                 </td>
                 <td>
@@ -60,7 +64,7 @@ const OrderListScreen = () => {
         </Table>
       )}
     </>
-  )
-}
+  );
+};
 
 export default OrderListScreen;
