@@ -4,20 +4,37 @@ import { Pagination } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const Paginate = ({ pages, page, isAdmin, keyword }) => {
+
+  let link;
+  if (!isAdmin) {
+    if (keyword) {
+      link = `/search/${keyword}/page/${x + 1}`;
+    } else {
+      link = `/page/${x + 1}`;
+    }
+  } else {
+    link = `/admin/productlist/${x + 1}`;
+  }
+
   return (
     pages > 1 && (
       <Pagination>
         {[...Array(pages).keys()].map((x) => {
-          const link = !isAdmin
-          ? keyword
-            ? `/search/${keyword}/page/${x + 1}`
-            : `/page/${x + 1}`
-          : `/admin/productlist/${x + 1}`
-        return (
-          <LinkContainer key={x + 1} to={link}>
-            <Pagination.Item active={x + 1 === page}>{x + 1}</Pagination.Item>
-          </LinkContainer>
-        );
+          let link;
+          if (!isAdmin) {
+            if (keyword) {
+              link = `/search/${keyword}/page/${x + 1}`;
+            } else {
+              link = `/page/${x + 1}`;
+            }
+          } else {
+            link = `/admin/productlist/${x + 1}`;
+          }
+          return (
+            <LinkContainer key={x + 1} to={link}>
+              <Pagination.Item active={x + 1 === page}>{x + 1}</Pagination.Item>
+            </LinkContainer>
+          );
         })}
       </Pagination>
     )
