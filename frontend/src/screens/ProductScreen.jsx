@@ -18,7 +18,6 @@ import {
 import Rating from '../components/Rating';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
-//import Meta from '../components/Meta';
 import { addToCart } from '../slices/cartSlice';
 
 const ProductScreen = () => {
