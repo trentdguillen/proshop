@@ -1,6 +1,8 @@
-import { Card } from "react-bootstrap"
-import { Link } from "react-router-dom";
-import Rating from "./Rating";
+import React from 'react';
+import PropTypes from 'prop-types'; // Import PropTypes
+import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import Rating from './Rating';
 
 const Product = ({ product }) => {
     return (
@@ -16,15 +18,26 @@ const Product = ({ product }) => {
                     </Card.Title>
                 </Link>
 
-                <Card.Text as ='div'>
-                    <Rating value={ product.rating } text={`${product.numReviews}
-                    reviews`} />
+                <Card.Text as='div'>
+                    <Rating value={product.rating} text={`${product.numReviews} reviews`} />
                 </Card.Text>
 
-                <Card.Text as="h3">${product.price}
-                </Card.Text>
+                <Card.Text as="h3">${product.price}</Card.Text>
             </Card.Body>
         </Card>
     );
 };
+
+// Define propTypes for the component
+Product.propTypes = {
+    product: PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        numReviews: PropTypes.number.isRequired,
+        price: PropTypes.number.isRequired
+    }).isRequired
+};
+
 export default Product;

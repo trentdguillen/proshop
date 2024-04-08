@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types'; // Import PropTypes
 import { Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -42,6 +44,14 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
         </Nav.Item>
     </Nav>
   );
+};
+
+// Define propTypes for the component
+CheckoutSteps.propTypes = {
+  step1: PropTypes.bool.isRequired,
+  step2: PropTypes.bool.isRequired,
+  step3: PropTypes.bool.isRequired,
+  step4: PropTypes.bool.isRequired
 };
 
 export default CheckoutSteps;
