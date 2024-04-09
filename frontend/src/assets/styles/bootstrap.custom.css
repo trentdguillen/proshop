@@ -3647,18 +3647,15 @@ fieldset:disabled .btn {
 .dropend .dropdown-toggle::after {
   display: inline-block;
   margin-left: 0.255em;
-  vertical-align: 0.255em;
   content: '';
   border-top: 0.3em solid transparent;
   border-right: 0;
   border-bottom: 0.3em solid transparent;
   border-left: 0.3em solid;
+  vertical-align: 0;
 }
 .dropend .dropdown-toggle:empty::after {
   margin-left: 0;
-}
-.dropend .dropdown-toggle::after {
-  vertical-align: 0;
 }
 
 .dropstart .dropdown-menu[data-bs-popper] {
@@ -3669,28 +3666,23 @@ fieldset:disabled .btn {
   margin-right: var(--bs-dropdown-spacer);
 }
 .dropstart .dropdown-toggle::after {
-  display: inline-block;
   margin-left: 0.255em;
   vertical-align: 0.255em;
   content: '';
-}
-.dropstart .dropdown-toggle::after {
   display: none;
 }
+
 .dropstart .dropdown-toggle::before {
   display: inline-block;
   margin-right: 0.255em;
-  vertical-align: 0.255em;
   content: '';
   border-top: 0.3em solid transparent;
   border-right: 0.3em solid;
   border-bottom: 0.3em solid transparent;
+  vertical-align: 0;
 }
 .dropstart .dropdown-toggle:empty::after {
   margin-left: 0;
-}
-.dropstart .dropdown-toggle::before {
-  vertical-align: 0;
 }
 
 .dropdown-divider {
