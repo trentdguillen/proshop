@@ -146,8 +146,8 @@ const OrderScreen = () => {
                 <Message>Order is empty</Message>
               ) : (
                 <ListGroup variant='flush'>
-                  {order.orderItems.map((item, index) => (
-                    <ListGroup.Item key={index}>
+                  {order.orderItems.map((item) => (
+                    <ListGroup.Item key={item.id}>
                       <Row>
                         <Col md={1}>
                           <Image
@@ -226,8 +226,7 @@ const OrderScreen = () => {
 
               {loadingDeliver && <Loader />}
 
-              {userInfo &&
-                userInfo.isAdmin &&
+              {userInfo?.isAdmin &&
                 order.isPaid &&
                 !order.isDelivered && (
                   <ListGroup.Item>
