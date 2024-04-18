@@ -31,6 +31,7 @@ import UserEditScreen from './screens/admin/UserEditScreen';
 import store from './store';
 import { Provider } from 'react-redux';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import SaveForLaterScreen from './screens/SaveForLaterScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
