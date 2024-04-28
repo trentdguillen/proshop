@@ -1,3 +1,4 @@
+import SortBy from '../components/SortBy';
 import { PRODUCTS_URL } from '../constants';
 import { apiSlice } from './apiSlice';
 
@@ -10,6 +11,14 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 5,
       providesTags: ['Products'],
+    }),
+    getProductsByPrice: builder.query({
+      query: ({ pageNumber }) => ({
+        url:`${PRODUCTS_URL}/sortPrice`,
+        params: { SortBy: 'price_asc', pageNumber },
+      }),
+      keepUnusedDataFor: 5,
+      providesTags: ['Products']
     }),
     getProductDetails: builder.query({
       query: (productId) => ({
@@ -62,6 +71,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
+  useGetProductsByPriceQuery,
   useGetProductsQuery,
   useGetProductDetailsQuery,
   useCreateProductMutation,
