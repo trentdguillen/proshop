@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Row,
@@ -18,7 +19,9 @@ import {
 import Rating from '../components/Rating';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+//import Meta from '../components/Meta';
 import { addToCart } from '../slices/cartSlice';
+import { saveItem } from '../slices/saveForLaterSlice';
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -61,6 +64,11 @@ const ProductScreen = () => {
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
+  };
+
+  const saveForLaterHandler = () => {
+    dispatch(saveItem({ ...product, qty }));
+    toast.success('Item saved for later');
   };
 
   return (
@@ -150,6 +158,9 @@ const ProductScreen = () => {
                       onClick={addToCartHandler}
                     >
                       Add To Cart
+                    </Button>
+                    <Button variant="info" className='btn-block' onClick={saveForLaterHandler}>
+                      Save For Later
                     </Button>
                   </ListGroup.Item>
                 </ListGroup>

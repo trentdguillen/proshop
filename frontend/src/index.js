@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './assets/styles/bootstrap.custom.css';
 import './assets/styles/index.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {
@@ -32,6 +33,7 @@ import ContactScreen from './screens/ContactScreen';
 import store from './store';
 import { Provider } from 'react-redux';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import SaveForLaterScreen from './screens/SaveForLaterScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -49,6 +51,7 @@ const router = createBrowserRouter(
       <Route path='/cart' element={<CartScreen />} />
       <Route path='/login' element={<LoginScreen />} />
       <Route path='/register' element={<RegisterScreen />} />
+      <Route path='/saveforlater' element={<SaveForLaterScreen />} />
       {/* Registered users */}
       <Route path='' element={<PrivateRoute />}>
         <Route path='/shipping' element={<ShippingScreen />} />
@@ -88,3 +91,4 @@ root.render(
 );
 
 reportWebVitals();
+

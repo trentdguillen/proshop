@@ -22,7 +22,6 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = '' }) => {
      </Pagination>
    )
  );
-
 };
 
 
