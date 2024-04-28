@@ -1,28 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const SortBy = ({ handleSort }) => {
-  const [sortBy, setSortBy] = useState('');
+const SortBy = () => {
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const selectedSort = e.target.value;
-    setSortBy(selectedSort);
-    handleSort(selectedSort);
+  const handleSortByPrice = (event) => {
+    const selectedRoute = event.target.value;
+
+    navigate(selectedRoute);
   };
 
   return (
-    <div className="mb-3">
-      <label htmlFor="sort" className='form-label'>Sort By:</label>
-      <select
-        id="sort"
-        className="form-select form-select-sm"
-        style={{width: '100px'}}
-        value={sortBy}
-        onChange={handleChange}
-      >
-        <option value="">Sort By...</option>
-        <option value="category_asc">Category (A-Z)</option>
-        <option value="price_asc">Price (Low to High)</option>
-        <option value="price_desc">Price (High to Low)</option>
+    <div>
+      <label htmlFor="sortByPrice"  style={{marginRight: '10px'}} >Sort</label>
+      <select id="sortByPrice"onChange={handleSortByPrice}>
+        <option value="/">Sort by...</option>
+        <option value="/sortprice">Sort by price</option>
+        <option value="/sortcategory">Sort by category</option>
       </select>
     </div>
   );
