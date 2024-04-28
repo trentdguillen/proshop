@@ -8,6 +8,8 @@ import { logout } from '../slices/authSlice';
 import SearchBox from './SearchBox';
 import logo from '../assets/logo.png';
 import { resetCart } from '../slices/cartSlice';
+import SortBy from './SortBy'
+import { useState } from 'react';
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -43,6 +45,7 @@ const Header = () => {
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
               <SearchBox />
+              <SortBy/>
               <LinkContainer to='/cart'>
                 <Nav.Link>
                   <FaShoppingCart /> Cart
